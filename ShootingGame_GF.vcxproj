@@ -139,9 +139,11 @@
   <!-- ファイル -->
   <ItemGroup>
     <!-- プリコンパイル済みヘッダー -->
+    <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClInclude Include="Game\Player.h" />
     <ClInclude Include="pch.h" />
     <!-- メイン -->
     <ClCompile Include="WinMain.cpp" />

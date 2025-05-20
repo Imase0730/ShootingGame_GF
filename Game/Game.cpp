@@ -25,6 +25,8 @@
 Game::Game()
 	: m_key{ 0 }
 	, m_oldKey{ 0 }
+	, m_ghShootingGame{ -1 }
+	, m_player{}
 {
 	// 乱数の初期値を設定
 	SRand(static_cast<int>(time(nullptr)));
@@ -53,6 +55,8 @@ void Game::Initialize()
 {
 	// ゲームの初期化
 
+	// 絵の読み込み
+	m_ghShootingGame = LoadGraph(L"Resources/Textures/ShootingGame.png");
 }
 
 
@@ -73,6 +77,8 @@ void Game::Update(float elapsedTime)
 
 	// ゲームの更新
 
+	// プレイヤーの更新
+	m_player.Update(m_key, ~m_oldKey & m_key);
 }
 
 
@@ -88,7 +94,8 @@ void Game::Render()
 {
 	// ゲームの描画
 
-
+	// プレイヤーの描画
+	m_player.Render(m_ghShootingGame);
 
 }
 
