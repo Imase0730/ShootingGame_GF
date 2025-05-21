@@ -9,11 +9,18 @@ public:
 	// 大きさ
 	static constexpr int SIZE = 64;
 
+	// 移動の速さ
+	static constexpr int SPEED = 5;
+
 	// データメンバの宣言 -----------------------------------------------
 private:
 
 	// 位置
 	POINT m_position;
+
+	// 速度
+	POINT m_velocity;
+
 
 	// メンバ関数の宣言 -------------------------------------------------
 public:
@@ -23,6 +30,9 @@ public:
 
 	// デストラクタ
 	~Player();
+
+	// 初期化関数
+	void Initialize(POINT position);
 
 	// 更新関数
 	void Update(int keyCondition, int keyTrigger);

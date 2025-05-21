@@ -57,6 +57,11 @@ void Game::Initialize()
 
 	// 絵の読み込み
 	m_ghShootingGame = LoadGraph(L"Resources/Textures/ShootingGame.png");
+
+	// プレイヤーの初期化
+	POINT startPosition = POINT{ PLAYER_START_POSITION_X, PLAYER_START_POSITION_Y };
+	m_player.Initialize(startPosition);
+
 }
 
 

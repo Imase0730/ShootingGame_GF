@@ -16,6 +16,7 @@
 
 // ヘッダファイルの読み込み ===================================================
 
+#include "Game/Screen.h"
 #include "Player.h"
 
 
@@ -33,8 +34,11 @@ class Game
 // クラス定数の宣言 -------------------------------------------------
 public:
 	// システム関連
-	static constexpr const wchar_t* TITLE = L"Sample Game";   ///< ゲームタイトル
+	static constexpr const wchar_t* TITLE = L"Shooting Game";   ///< ゲームタイトル
 
+	// プレイヤー初期位置
+	static constexpr int PLAYER_START_POSITION_X = (Screen::WIDTH - Player::SIZE) / 2;
+	static constexpr int PLAYER_START_POSITION_Y = 600;
 
 
 // データメンバの宣言 -----------------------------------------------
