@@ -18,7 +18,7 @@
 
 #include "Game/Screen.h"
 #include "Player.h"
-#include "Enemy.h"
+#include "EnemyManager.h"
 
 // クラスの宣言 ===============================================================
 
@@ -53,8 +53,8 @@ private:
 	// プレイヤー
 	Player m_player;
 
-	// 敵
-	Enemy m_enemy;
+	// 敵のマネージャー
+	EnemyManager m_enemyManager;
 
 // メンバ関数の宣言 -------------------------------------------------
 // コンストラクタ/デストラクタ

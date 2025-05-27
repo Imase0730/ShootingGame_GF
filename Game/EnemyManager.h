@@ -8,6 +8,9 @@ class EnemyManager
 	// クラス定数の宣言 -------------------------------------------------
 public:
 
+	// 敵の出現間隔
+	static constexpr int SPAWN_INTERVAL = 10;
+
 	// データメンバの宣言 -----------------------------------------------
 private:
 
@@ -16,6 +19,9 @@ private:
 
 	// 敵のオブジェクトへのポインタ
 	Enemy* m_pEnemy;
+
+	// 敵の出現用カウンター
+	int m_spawnCounter;
 
 	// メンバ関数の宣言 -------------------------------------------------
 public:
@@ -37,5 +43,10 @@ public:
 
 	// 終了処理
 	void Finalize();
+
+private:
+
+	// 敵を出現させる関数
+	void AppearEnemy(POINT point);
 
 };

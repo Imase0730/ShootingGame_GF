@@ -27,7 +27,7 @@ Game::Game()
 	, m_oldKey{ 0 }
 	, m_ghShootingGame{ -1 }
 	, m_player{}
-	, m_enemy{}
+	, m_enemyManager{}
 {
 	// 乱数の初期値を設定
 	SRand(static_cast<int>(time(nullptr)));
@@ -63,8 +63,8 @@ void Game::Initialize()
 	POINT startPosition = POINT{ PLAYER_START_POSITION_X, PLAYER_START_POSITION_Y };
 	m_player.Initialize(startPosition);
 
-	// 敵の初期化
-	m_enemy.Initialize(POINT{ 100, 100 });
+	// 敵のマネージャーの初期化
+	m_enemyManager.Initialize(3);
 
 }
 
@@ -89,8 +89,8 @@ void Game::Update(float elapsedTime)
 	// プレイヤーの更新
 	m_player.Update(m_key, ~m_oldKey & m_key);
 
-	// 敵の更新
-	m_enemy.Update();
+	// 敵のマネージャーの更新
+	m_enemyManager.Update();
 
 }
 
@@ -110,8 +110,8 @@ void Game::Render()
 	// プレイヤーの描画
 	m_player.Render(m_ghShootingGame);
 
-	// 敵の描画
-	m_enemy.Render(m_ghShootingGame);
+	// 敵のマネージャーの描画
+	m_enemyManager.Render(m_ghShootingGame);
 
 }
 

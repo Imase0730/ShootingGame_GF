@@ -15,6 +15,9 @@ public:
 	// データメンバの宣言 -----------------------------------------------
 private:
 
+	// アクティブならtrueを設定
+	bool m_isActive;
+
 	// 位置
 	POINT m_position;
 
@@ -32,12 +35,18 @@ public:
 	~Enemy();
 
 	// 初期化関数
-	void Initialize(POINT position);
+	void Initialize();
 
 	// 更新関数
 	void Update();
 
 	// 描画関数
 	void Render(int ghShootingGame);
+
+	// 敵がアクティブか調べる関数
+	bool IsActive() const { return m_isActive; }
+
+	// この敵を出現させる関数
+	void Appear(POINT position);
 
 };
