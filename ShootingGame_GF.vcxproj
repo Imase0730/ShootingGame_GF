@@ -140,11 +140,13 @@
   <ItemGroup>
     <!-- プリコンパイル済みヘッダー -->
     <ClCompile Include="Game\Enemy.cpp" />
+    <ClCompile Include="Game\EnemyManager.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClInclude Include="Game\Enemy.h" />
+    <ClInclude Include="Game\EnemyManager.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="pch.h" />
     <!-- メイン -->
