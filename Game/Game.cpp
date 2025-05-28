@@ -64,7 +64,7 @@ void Game::Initialize()
 	m_player.Initialize(startPosition);
 
 	// 敵のマネージャーの初期化
-	m_enemyManager.Initialize(3);
+	m_enemyManager.Initialize(10);
 
 }
 

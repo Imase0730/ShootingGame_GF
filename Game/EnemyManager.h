@@ -47,6 +47,6 @@ public:
 private:
 
 	// “G‚ğoŒ»‚³‚¹‚éŠÖ”
-	void AppearEnemy(POINT point);
+	void SpawnEnemy(POINT point);
 
 };

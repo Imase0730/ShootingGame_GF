@@ -1,31 +1,32 @@
-#include "Enemy.h"
+#include "Bullet.h"
 #include "Game/Screen.h"
 
 // コンストラクタ
-Enemy::Enemy()
+Bullet::Bullet()
 	: m_isActive{ false }
 	, m_position{ 0, 0 }
 	, m_velocity{ 0, 0 }
+	, m_type{ Type::None }
 {
 }
 
 // デストラクタ
-Enemy::~Enemy()
+Bullet::~Bullet()
 {
 }
 
 // 初期化関数
-void Enemy::Initialize(POINT position)
+void Bullet::Initialize(POINT position)
 {
 	// 敵の移動速度を設定する
-	m_velocity = POINT{ 0, Enemy::SPEED };
+	m_velocity = POINT{ 0, Bullet::SPEED };
 
 	// 出現位置を設定する
 	m_position = position;
 }
 
 // 更新関数
-void Enemy::Update()
+void Bullet::Update()
 {
 	// 位置に速度を足す
 	m_position.x += m_velocity.x;
@@ -40,16 +41,16 @@ void Enemy::Update()
 }
 
 // 描画関数
-void Enemy::Render(int ghShootingGame)
+void Bullet::Render(int ghShootingGame)
 {
 	// 敵の描画
-	DrawRectExtendGraph(m_position.x, m_position.y, m_position.x + Enemy::SIZE, m_position.y + Enemy::SIZE
+	DrawRectExtendGraph(m_position.x, m_position.y, m_position.x + Bullet::SIZE, m_position.y + Bullet::SIZE
 		, 96, 0, 32, 32
 		, ghShootingGame, TRUE);
 }
 
 // この敵を出現させる関数
-void Enemy::Spawn(POINT position)
+void Bullet::Spawn(POINT position)
 {
 	// アクティブにする
 	m_isActive = true;

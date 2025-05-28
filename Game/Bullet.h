@@ -1,13 +1,19 @@
 #pragma once
 
-// 敵クラス
-class Enemy
+// 弾クラス
+class Bullet
 {
+	// 列挙型の定義 -----------------------------------------------------
+public:
+
+	// 弾のタイプ
+	enum class Type { None, Player, Enemy, TypeMax };
+
 	// クラス定数の宣言 -------------------------------------------------
 public:
 
 	// 大きさ
-	static constexpr int SIZE = 64;
+	static constexpr int SIZE = 16;
 
 	// 移動の速さ
 	static constexpr int SPEED = 5;
@@ -24,15 +30,17 @@ private:
 	// 速度
 	POINT m_velocity;
 
+	// タイプ
+	Type m_type;
 
 	// メンバ関数の宣言 -------------------------------------------------
 public:
 
 	// コンストラクタ
-	Enemy();
+	Bullet();
 
 	// デストラクタ
-	~Enemy();
+	~Bullet();
 
 	// 初期化関数
 	void Initialize(POINT position);

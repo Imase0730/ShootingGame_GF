@@ -27,12 +27,6 @@ void EnemyManager::Initialize(int enemyCount)
 
 	// 敵の数分メモリを確保する
 	m_pEnemy = new Enemy[enemyCount];
-
-	// 全ての敵を初期化する
-	for (int i = 0; i < enemyCount; i++)
-	{
-		m_pEnemy[i].Initialize();
-	}
 }
 
 // 更新処理
@@ -41,7 +35,8 @@ void EnemyManager::Update()
 	// 全ての敵の更新処理を行う
 	for (int i = 0; i < m_enemyCount; i++)
 	{
-		m_pEnemy[i].Update();
+		// 敵がアクティブだったら更新する
+		if (m_pEnemy[i].IsActive()) m_pEnemy[i].Update();
 	}
 
 	// 敵の出現用のカウンターの加算
@@ -53,6 +48,9 @@ void EnemyManager::Update()
 		m_spawnCounter = 0;
 
 		// 敵を出現させる
+		POINT position = 
+			POINT{ GetRand(Screen::WIDTH - Enemy::SIZE), -Enemy::SIZE };
+		SpawnEnemy(position);
 	}
 
 }
@@ -63,7 +61,8 @@ void EnemyManager::Render(int ghShootingGame)
 	// 全ての敵の描画処理を行う
 	for (int i = 0; i < m_enemyCount; i++)
 	{
-		m_pEnemy[i].Render(ghShootingGame);
+		// 敵がアクティブだったら描画する
+		if (m_pEnemy[i].IsActive()) m_pEnemy[i].Render(ghShootingGame);
 	}
 }
 
@@ -73,6 +72,17 @@ void EnemyManager::Finalize()
 }
 
 // 敵を出現させる関数
-void EnemyManager::AppearEnemy(POINT point)
+void EnemyManager::SpawnEnemy(POINT position)
 {
+	for (int i = 0; i < m_enemyCount; i++)
+	{
+		// 敵が未使用だったら
+		if (!m_pEnemy[i].IsActive())
+		{
+			// 敵を出現させる
+			m_pEnemy[i].Spawn(position);
+			return;
+		}
+	}
 }
+
