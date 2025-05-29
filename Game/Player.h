@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Bullet.h"
+
 // プレイヤークラス
 class Player
 {
@@ -21,6 +23,8 @@ private:
 	// 速度
 	POINT m_velocity;
 
+	// 弾
+	Bullet m_bullet;
 
 	// メンバ関数の宣言 -------------------------------------------------
 public:

@@ -15,8 +15,11 @@ public:
 	// 大きさ
 	static constexpr int SIZE = 16;
 
-	// 移動の速さ
-	static constexpr int SPEED = 5;
+	// 各タイプ毎の弾の速度
+	static constexpr POINT VELOCITY[static_cast<int>(Type::TypeMax)] =
+	{
+		{ 0, 0 }, { 0, -10 }, { 0, 10 }
+	};
 
 	// データメンバの宣言 -----------------------------------------------
 private:
@@ -37,7 +40,7 @@ private:
 public:
 
 	// コンストラクタ
-	Bullet();
+	Bullet(Type type);
 
 	// デストラクタ
 	~Bullet();
@@ -54,7 +57,7 @@ public:
 	// 敵がアクティブか調べる関数
 	bool IsActive() const { return m_isActive; }
 
-	// この敵を出現させる関数
-	void Spawn(POINT position);
+	// 弾を発射する関数
+	void Shoot(POINT position);
 
 };
