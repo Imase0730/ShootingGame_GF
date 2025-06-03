@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enemy.h"
+#include "BulletManager.h"
 
 // 敵のマネージャークラス
 class EnemyManager
@@ -36,7 +37,7 @@ public:
 	void Initialize(int enemyCount);
 
 	// 更新処理
-	void Update();
+	void Update(BulletManager& bulletManager);
 
 	// 描画処理
 	void Render(int ghShootingGame);

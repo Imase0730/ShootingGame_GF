@@ -30,13 +30,13 @@ void EnemyManager::Initialize(int enemyCount)
 }
 
 // 更新処理
-void EnemyManager::Update()
+void EnemyManager::Update(BulletManager& bulletManager)
 {
 	// 全ての敵の更新処理を行う
 	for (int i = 0; i < m_enemyCount; i++)
 	{
 		// 敵がアクティブだったら更新する
-		if (m_pEnemy[i].IsActive()) m_pEnemy[i].Update();
+		if (m_pEnemy[i].IsActive()) m_pEnemy[i].Update(bulletManager);
 	}
 
 	// 敵の出現用のカウンターの加算

@@ -98,7 +98,7 @@ void Game::Update(float elapsedTime)
 	m_player.Update(m_key, ~m_oldKey & m_key, m_playerBulletManager);
 
 	// 敵のマネージャーの更新
-	m_enemyManager.Update();
+	m_enemyManager.Update(m_enemyBulletManager);
 
 	// 弾のマネージャーの更新（プレイヤー用）
 	m_playerBulletManager.Update();

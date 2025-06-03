@@ -1,5 +1,7 @@
 #pragma once
 
+#include "BulletManager.h"
+
 // 敵クラス
 class Enemy
 {
@@ -11,6 +13,9 @@ public:
 
 	// 移動の速さ
 	static constexpr int SPEED = 5;
+
+	// 弾の発射間隔
+	static constexpr int SHOOT_INTERVAL = 60;
 
 	// データメンバの宣言 -----------------------------------------------
 private:
@@ -24,6 +29,8 @@ private:
 	// 速度
 	POINT m_velocity;
 
+	// 弾の発射用カウンター
+	int m_shootCounter;
 
 	// メンバ関数の宣言 -------------------------------------------------
 public:
@@ -38,7 +45,7 @@ public:
 	void Initialize(POINT position);
 
 	// 更新関数
-	void Update();
+	void Update(BulletManager& bulletManager);
 
 	// 描画関数
 	void Render(int ghShootingGame);
