@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Bullet.h"
+#include "BulletManager.h"
 
 // プレイヤークラス
 class Player
@@ -23,9 +23,6 @@ private:
 	// 速度
 	POINT m_velocity;
 
-	// 弾
-	Bullet m_bullet;
-
 	// メンバ関数の宣言 -------------------------------------------------
 public:
 
@@ -39,7 +36,7 @@ public:
 	void Initialize(POINT position);
 
 	// 更新関数
-	void Update(int keyCondition, int keyTrigger);
+	void Update(int keyCondition, int keyTrigger, BulletManager& bulletManager);
 
 	// 描画関数
 	void Render(int ghShootingGame);

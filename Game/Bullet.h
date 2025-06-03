@@ -40,7 +40,7 @@ private:
 public:
 
 	// コンストラクタ
-	Bullet(Type type);
+	Bullet();
 
 	// デストラクタ
 	~Bullet();
@@ -59,5 +59,8 @@ public:
 
 	// 弾を発射する関数
 	void Shoot(POINT position);
+
+	// 弾のタイプを設定する
+	void SetType(Type type) { m_type = type; }
 
 };

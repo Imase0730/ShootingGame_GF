@@ -19,6 +19,7 @@
 #include "Game/Screen.h"
 #include "Player.h"
 #include "EnemyManager.h"
+#include "BulletManager.h"
 
 // クラスの宣言 ===============================================================
 
@@ -55,6 +56,13 @@ private:
 
 	// 敵のマネージャー
 	EnemyManager m_enemyManager;
+
+	// 弾のマネージャー（プレイヤー用）
+	BulletManager m_playerBulletManager;
+
+	// 弾のマネージャー（敵用）
+	BulletManager m_enemyBulletManager;
+
 
 // メンバ関数の宣言 -------------------------------------------------
 // コンストラクタ/デストラクタ

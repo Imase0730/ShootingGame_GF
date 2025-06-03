@@ -140,6 +140,7 @@
   <ItemGroup>
     <!-- プリコンパイル済みヘッダー -->
     <ClCompile Include="Game\Bullet.cpp" />
+    <ClCompile Include="Game\BulletManager.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\EnemyManager.cpp" />
     <ClCompile Include="Game\Player.cpp" />
@@ -147,6 +148,7 @@
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
     <ClInclude Include="Game\Bullet.h" />
+    <ClInclude Include="Game\BulletManager.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\EnemyManager.h" />
     <ClInclude Include="Game\Player.h" />

@@ -2,11 +2,11 @@
 #include "Game/Screen.h"
 
 // コンストラクタ
-Bullet::Bullet(Type type)
+Bullet::Bullet()
 	: m_isActive{ false }
 	, m_position{ 0, 0 }
 	, m_velocity{ 0, 0 }
-	, m_type{ type }
+	, m_type{ Type::None }
 {
 }
 

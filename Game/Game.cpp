@@ -28,6 +28,8 @@ Game::Game()
 	, m_ghShootingGame{ -1 }
 	, m_player{}
 	, m_enemyManager{}
+	, m_playerBulletManager{}
+	, m_enemyBulletManager{}
 {
 	// 乱数の初期値を設定
 	SRand(static_cast<int>(time(nullptr)));
@@ -66,6 +68,12 @@ void Game::Initialize()
 	// 敵のマネージャーの初期化
 	m_enemyManager.Initialize(10);
 
+	// 弾のマネージャーの初期化（プレイヤー用）
+	m_playerBulletManager.Initialize(Bullet::Type::Player, 3);
+
+	// 弾のマネージャーの初期化（敵用）
+	m_enemyBulletManager.Initialize(Bullet::Type::Enemy, 100);
+
 }
 
 
@@ -87,10 +95,16 @@ void Game::Update(float elapsedTime)
 	// ゲームの更新
 
 	// プレイヤーの更新
-	m_player.Update(m_key, ~m_oldKey & m_key);
+	m_player.Update(m_key, ~m_oldKey & m_key, m_playerBulletManager);
 
 	// 敵のマネージャーの更新
 	m_enemyManager.Update();
+
+	// 弾のマネージャーの更新（プレイヤー用）
+	m_playerBulletManager.Update();
+
+	// 弾のマネージャーの更新（敵用）
+	m_enemyBulletManager.Update();
 
 }
 
@@ -112,6 +126,12 @@ void Game::Render()
 
 	// 敵のマネージャーの描画
 	m_enemyManager.Render(m_ghShootingGame);
+
+	// 弾のマネージャーの描画（プレイヤー用）
+	m_playerBulletManager.Render(m_ghShootingGame);
+
+	// 弾のマネージャーの描画（敵用）
+	m_enemyBulletManager.Render(m_ghShootingGame);
 
 }
 

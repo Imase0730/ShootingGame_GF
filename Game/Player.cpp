@@ -5,7 +5,6 @@
 Player::Player()
 	: m_position{ 0, 0 }
 	, m_velocity{ 0, 0 }
-	, m_bullet{ Bullet::Type::Player }
 {
 }
 
@@ -22,7 +21,7 @@ void Player::Initialize(POINT position)
 }
 
 // 更新関数
-void Player::Update(int keyCondition, int keyTrigger)
+void Player::Update(int keyCondition, int keyTrigger, BulletManager& bulletManager)
 {
 	// 速度を０にする
 	m_velocity = POINT{ 0, 0 };
@@ -55,17 +54,11 @@ void Player::Update(int keyCondition, int keyTrigger)
 	// スペースキーが押されたら
 	if (keyTrigger & PAD_INPUT_10)
 	{
-		// 弾が未使用なら
-		if (!m_bullet.IsActive())
-		{
-			// 弾を発射する
-			POINT pos = POINT{ m_position.x + (Player::SIZE - Bullet::SIZE) / 2, m_position.y };
-			m_bullet.Shoot(pos);
-		}
+		// 弾を発射する
+		POINT position = POINT{
+			m_position.x + (Player::SIZE - Bullet::SIZE) / 2, m_position.y };
+		bulletManager.ShootBullet(position);
 	}
-
-	// 弾が使用中だったら更新する
-	if (m_bullet.IsActive()) m_bullet.Update();
 
 }
 
@@ -76,7 +69,4 @@ void Player::Render(int ghShootingGame)
 	DrawRectExtendGraph( m_position.x, m_position.y, m_position.x + Player::SIZE, m_position.y + Player::SIZE
 					   , 0, 0, 32, 32
 					   , ghShootingGame, TRUE);
-
-	// 弾が使用中だったら描画する
-	if (m_bullet.IsActive()) m_bullet.Render(ghShootingGame);
 }

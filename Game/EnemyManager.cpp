@@ -48,8 +48,7 @@ void EnemyManager::Update()
 		m_spawnCounter = 0;
 
 		// ìGÇèoåªÇ≥ÇπÇÈ
-		POINT position = 
-			POINT{ GetRand(Screen::WIDTH - Enemy::SIZE), -Enemy::SIZE };
+		POINT position = POINT{ GetRand(Screen::WIDTH - Enemy::SIZE), -Enemy::SIZE };
 		SpawnEnemy(position);
 	}
 
