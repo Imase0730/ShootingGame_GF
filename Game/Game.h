@@ -88,13 +88,12 @@ public:
 	// 終了処理
 	void Finalize();
 
-
-// 取得/設定
-public:
-
-
-// 内部実装
 private:
 
+	// 矩形の衝突判定
+	bool IsColliding(RECT a, RECT b);
+
+	// プレイヤーと敵の弾との衝突判定
+	void CheckPlayerAndEnemyBulletCollision();
 
 };

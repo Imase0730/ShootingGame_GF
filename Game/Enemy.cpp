@@ -69,3 +69,16 @@ void Enemy::Spawn(POINT position)
 	// 敵を初期化する
 	Initialize(position);
 }
+
+// 境界ボックスを取得する関数
+RECT Enemy::GetBoundingBox() const
+{
+	RECT rect{};
+
+	rect.left = m_position.x;
+	rect.right = m_position.x + Enemy::SIZE;
+	rect.top = m_position.y;
+	rect.bottom = m_position.y + Enemy::SIZE;
+
+	return rect;
+}

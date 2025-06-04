@@ -94,8 +94,12 @@ void Game::Update(float elapsedTime)
 
 	// ゲームの更新
 
-	// プレイヤーの更新
-	m_player.Update(m_key, ~m_oldKey & m_key, m_playerBulletManager);
+	// プレイヤーがアクティブだったら
+	if (m_player.IsActive())
+	{
+		// プレイヤーの更新
+		m_player.Update(m_key, ~m_oldKey & m_key, m_playerBulletManager);
+	}
 
 	// 敵のマネージャーの更新
 	m_enemyManager.Update(m_enemyBulletManager);
@@ -121,8 +125,12 @@ void Game::Render()
 {
 	// ゲームの描画
 
-	// プレイヤーの描画
-	m_player.Render(m_ghShootingGame);
+	// プレイヤーがアクティブだったら
+	if (m_player.IsActive())
+	{
+		// プレイヤーの描画
+		m_player.Render(m_ghShootingGame);
+	}
 
 	// 敵のマネージャーの描画
 	m_enemyManager.Render(m_ghShootingGame);
@@ -149,3 +157,24 @@ void Game::Finalize()
 	// ゲームの終了処理
 
 }
+
+// 矩形の衝突判定
+bool Game::IsColliding(RECT a, RECT b)
+{
+	if ( (a.right >= b.left)
+	  && (a.left <= b.right)
+	  && (a.bottom >= b.top)
+	  && (a.top <= b.bottom)
+	   )
+	{
+		return true;
+	}
+	return false;
+}
+
+// プレイヤーと敵の弾との衝突判定
+void Game::CheckPlayerAndEnemyBulletCollision()
+{
+
+}
+

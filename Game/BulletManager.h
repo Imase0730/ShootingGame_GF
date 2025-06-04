@@ -41,4 +41,7 @@ public:
 	// ’e‚ğ”­Ë‚·‚éŠÖ”
 	void ShootBullet(POINT point);
 
+	// ŠÇ—‚µ‚Ä‚¢‚é’e‚ğæ“¾‚·‚éŠÖ”
+	Bullet* GetBullet(int index);
+
 };

@@ -63,4 +63,10 @@ public:
 	// 弾のタイプを設定する
 	void SetType(Type type) { m_type = type; }
 
+	// 境界ボックスを取得する関数
+	RECT GetBoundingBox() const;
+
+	// 衝突したら呼び出される関数
+	void OnHit() { m_isActive = false; }
+
 };

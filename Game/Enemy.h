@@ -56,4 +56,10 @@ public:
 	// この敵を出現させる関数
 	void Spawn(POINT position);
 
+	// 境界ボックスを取得する関数
+	RECT GetBoundingBox() const;
+
+	// 衝突したら呼び出される関数
+	void OnHit() { m_isActive = false; }
+
 };

@@ -74,3 +74,16 @@ void Bullet::Shoot(POINT position)
 	// 弾を初期化する
 	Initialize(position);
 }
+
+// 境界ボックスを取得する関数
+RECT Bullet::GetBoundingBox() const
+{
+	RECT rect{};
+
+	rect.left = m_position.x;
+	rect.right = m_position.x + Bullet::SIZE;
+	rect.top = m_position.y;
+	rect.bottom = m_position.y + Bullet::SIZE;
+
+	return rect;
+}

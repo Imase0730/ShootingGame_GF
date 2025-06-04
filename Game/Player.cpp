@@ -3,7 +3,8 @@
 
 // コンストラクタ
 Player::Player()
-	: m_position{ 0, 0 }
+	: m_isActive{ false }
+	, m_position{ 0, 0 }
 	, m_velocity{ 0, 0 }
 {
 }
@@ -16,6 +17,9 @@ Player::~Player()
 // 初期化関数
 void Player::Initialize(POINT position)
 {
+	// アクティブにする
+	m_isActive = true;
+
 	// 位置を初期化する
 	m_position = position;
 }
@@ -69,4 +73,17 @@ void Player::Render(int ghShootingGame)
 	DrawRectExtendGraph( m_position.x, m_position.y, m_position.x + Player::SIZE, m_position.y + Player::SIZE
 					   , 0, 0, 32, 32
 					   , ghShootingGame, TRUE);
+}
+
+// 境界ボックスを取得する関数
+RECT Player::GetBoundingBox() const
+{
+	RECT rect{};
+
+	rect.left = m_position.x;
+	rect.right = m_position.x + Player::SIZE;
+	rect.top = m_position.y;
+	rect.bottom = m_position.y + Player::SIZE;
+
+	return rect;
 }

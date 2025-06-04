@@ -76,3 +76,18 @@ void BulletManager::ShootBullet(POINT position)
 	}
 }
 
+// 管理している弾を取得する関数
+Bullet* BulletManager::GetBullet(int index)
+{
+	// 弾の配列の添え字にできるインデックスかチェックする
+	if ((index < 0) || (index >= m_bulletCount)) return nullptr;
+
+	// 弾のワークが使用中なら
+	if (m_pBullet[index].IsActive())
+	{
+		return &m_pBullet[index];
+	}
+
+	return nullptr;
+}
+
