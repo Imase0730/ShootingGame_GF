@@ -94,6 +94,9 @@ private:
 	bool IsColliding(RECT a, RECT b);
 
 	// プレイヤーと敵の弾との衝突判定
-	void CheckPlayerAndEnemyBulletCollision();
+	void CheckPlayerColliedWithEnemyBullet();
+
+	// 敵とプレイヤーの弾との衝突判定
+	void CheckEnemyColliedWithPlayerBullet();
 
 };

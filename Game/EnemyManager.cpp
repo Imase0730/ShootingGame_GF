@@ -70,6 +70,21 @@ void EnemyManager::Finalize()
 {
 }
 
+// 管理している敵を取得する関数
+Enemy* EnemyManager::GetEnemy(int index)
+{
+	// 敵の配列の添え字にできるインデックスかチェックする
+	if ((index < 0) || (index >= m_enemyCount)) return nullptr;
+
+	// 敵のワークが使用中なら
+	if (m_pEnemy[index].IsActive())
+	{
+		return &m_pEnemy[index];
+	}
+
+	return nullptr;
+}
+
 // 敵を出現させる関数
 void EnemyManager::SpawnEnemy(POINT position)
 {

@@ -45,6 +45,14 @@ public:
 	// I—¹ˆ—
 	void Finalize();
 
+public:
+
+	// “G‚ÌŠÇ—‚µ‚Ä‚¢‚é”‚ğæ“¾‚·‚éŠÖ”
+	int GetEnemyCount() const { return m_enemyCount; }
+
+	// ŠÇ—‚µ‚Ä‚¢‚é“G‚ğæ“¾‚·‚éŠÖ”
+	Enemy* GetEnemy(int index);
+
 private:
 
 	// “G‚ğoŒ»‚³‚¹‚éŠÖ”

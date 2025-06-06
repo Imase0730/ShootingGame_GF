@@ -44,4 +44,7 @@ public:
 	// ŠÇ—‚µ‚Ä‚¢‚é’e‚ğæ“¾‚·‚éŠÖ”
 	Bullet* GetBullet(int index);
 
+	// ŠÇ—‚µ‚Ä‚¢‚é’e‚Ì”‚ğæ“¾‚·‚éŠÖ”
+	int GetBulletCount() const { return m_bulletCount; }
+
 };

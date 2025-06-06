@@ -110,6 +110,12 @@ void Game::Update(float elapsedTime)
 	// 弾のマネージャーの更新（敵用）
 	m_enemyBulletManager.Update();
 
+	// プレイヤーと敵の弾との衝突判定
+	CheckPlayerColliedWithEnemyBullet();
+
+	// 敵とプレイヤーの弾との衝突判定
+	CheckEnemyColliedWithPlayerBullet();
+
 }
 
 
@@ -173,8 +179,54 @@ bool Game::IsColliding(RECT a, RECT b)
 }
 
 // プレイヤーと敵の弾との衝突判定
-void Game::CheckPlayerAndEnemyBulletCollision()
+void Game::CheckPlayerColliedWithEnemyBullet()
 {
+	// プレイヤーが死亡していたら処理を行わない
+	if (m_player.IsActive() == false) return;
 
+	// 管理している敵の弾の数分ループ
+	for (int i = 0; i < m_enemyBulletManager.GetBulletCount(); i++)
+	{
+		// 使用していない弾なら処理を行わない
+		Bullet* pBullet = m_enemyBulletManager.GetBullet(i);
+		if (pBullet == nullptr) continue;
+
+		// プレイヤーと敵の弾と衝突判定を行う
+		if (IsColliding(m_player.GetBoundingBox(), pBullet->GetBoundingBox()))
+		{
+			// 衝突した
+			m_player.OnHit();
+			pBullet->OnHit();
+		}
+	}
 }
+
+// 敵とプレイヤーの弾との衝突判定
+void Game::CheckEnemyColliedWithPlayerBullet()
+{
+	// プレイヤーの弾の管理数分ループ
+	for (int j = 0; j < m_playerBulletManager.GetBulletCount(); j++)
+	{
+		// 弾が使用中でないなら処理を行わない
+		Bullet* pBullet = m_playerBulletManager.GetBullet(j);
+		if (!pBullet) continue;
+
+		// 敵の管理数分ループ
+		for (int i = 0; i < m_enemyManager.GetEnemyCount(); i++)
+		{
+			// 敵が使用中でないなら処理を行わない
+			Enemy* pEnemy = m_enemyManager.GetEnemy(i);
+			if (!pEnemy) continue;
+
+			// プレイヤーの弾と敵の衝突判定を行う
+			if (IsColliding(pBullet->GetBoundingBox(), pEnemy->GetBoundingBox()))
+			{
+				// 衝突した
+				pBullet->OnHit();
+				pEnemy->OnHit();
+			}
+		}
+	}
+}
+
 
