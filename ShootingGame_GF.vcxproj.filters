@@ -93,6 +93,9 @@
     <ClCompile Include="Game\BulletManager.cpp">
       <Filter>Game</Filter>
     </ClCompile>
+    <ClCompile Include="Game\Explosion.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -111,6 +114,9 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Game\BulletManager.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Explosion.h">
       <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>

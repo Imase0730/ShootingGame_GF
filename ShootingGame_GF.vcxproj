@@ -143,6 +143,7 @@
     <ClCompile Include="Game\BulletManager.cpp" />
     <ClCompile Include="Game\Enemy.cpp" />
     <ClCompile Include="Game\EnemyManager.cpp" />
+    <ClCompile Include="Game\Explosion.cpp" />
     <ClCompile Include="Game\Player.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -151,6 +152,7 @@
     <ClInclude Include="Game\BulletManager.h" />
     <ClInclude Include="Game\Enemy.h" />
     <ClInclude Include="Game\EnemyManager.h" />
+    <ClInclude Include="Game\Explosion.h" />
     <ClInclude Include="Game\Player.h" />
     <ClInclude Include="pch.h" />
     <!-- メイン -->
