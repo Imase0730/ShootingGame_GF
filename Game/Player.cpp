@@ -87,3 +87,9 @@ RECT Player::GetBoundingBox() const
 
 	return rect;
 }
+
+// プレイヤーの中心の位置を取得する関数
+POINT Player::GetCenterPosition()
+{
+	return POINT{ m_position.x + Player::SIZE / 2, m_position.y + Player::SIZE / 2 };
+}

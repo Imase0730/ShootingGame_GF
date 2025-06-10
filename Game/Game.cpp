@@ -30,6 +30,7 @@ Game::Game()
 	, m_enemyManager{}
 	, m_playerBulletManager{}
 	, m_enemyBulletManager{}
+	, m_explosion{}
 {
 	// 乱数の初期値を設定
 	SRand(static_cast<int>(time(nullptr)));
@@ -116,6 +117,12 @@ void Game::Update(float elapsedTime)
 	// 敵とプレイヤーの弾との衝突判定
 	CheckEnemyColliedWithPlayerBullet();
 
+	// 爆発のエフェクトの更新
+	for (int i = 0; i < EXPLOSION_MAX; i++)
+	{
+		m_explosion[i].Update();
+	}
+
 }
 
 
@@ -146,6 +153,12 @@ void Game::Render()
 
 	// 弾のマネージャーの描画（敵用）
 	m_enemyBulletManager.Render(m_ghShootingGame);
+
+	// 爆発エフェクトの描画
+	for (int i = 0; i < EXPLOSION_MAX; i++)
+	{
+		m_explosion[i].Render(m_ghShootingGame);
+	}
 
 }
 
@@ -225,6 +238,21 @@ void Game::CheckEnemyColliedWithPlayerBullet()
 				pBullet->OnHit();
 				pEnemy->OnHit();
 			}
+		}
+	}
+}
+
+// 爆発エフェクトを表示する関数
+void Game::SetExplosion(POINT position)
+{
+	for (int i = 0; i < EXPLOSION_MAX; i++)
+	{
+		// 使用可能な爆発エフェクトなら
+		if (!m_explosion[i].IsActive())
+		{
+			// 爆発エフェクトを発生する
+			m_explosion[i].Initialize(position);
+			return;
 		}
 	}
 }

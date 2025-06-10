@@ -82,3 +82,9 @@ RECT Enemy::GetBoundingBox() const
 
 	return rect;
 }
+
+// “G‚Ì’†S‚ÌˆÊ’u‚ğæ“¾‚·‚éŠÖ”
+POINT Enemy::GetCenterPosition()
+{
+	return POINT{ m_position.x + Enemy::SIZE / 2, m_position.y + Enemy::SIZE / 2 };
+}

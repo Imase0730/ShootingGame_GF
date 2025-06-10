@@ -53,4 +53,7 @@ public:
 	// 衝突したら呼び出される関数
 	void OnHit() { m_isActive = false; }
 
+	// プレイヤーの中心の位置を取得する関数
+	POINT GetCenterPosition();
+
 };

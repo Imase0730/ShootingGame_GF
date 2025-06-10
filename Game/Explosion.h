@@ -1,5 +1,6 @@
 #pragma once
 
+// 爆発クラス
 class Explosion
 {
 private:
@@ -12,6 +13,9 @@ private:
 	};
 
 private:
+
+	// 爆発アニメーションの間隔
+	static constexpr int ANIMATION_INTERVAL = 4;
 
 	// 爆発の表示の大きさ
 	static constexpr int SIZE = 64;
@@ -33,6 +37,9 @@ private:
 	// アニメーションステート
 	AnimationState m_animationState;
 
+	// 爆発のアニメーションカウンター
+	int m_animationCounter;
+
 public:
 
 	// コンストラクタ
@@ -48,8 +55,10 @@ public:
 	void Render(int ghShootingGame);
 
 	// 指定した位置に爆発を表示する関数
+	void Initialize(POINT position);
 
 	// この爆発オブジェクトが使用中かチェックする関数
+	bool IsActive();
 
 };
 

@@ -62,4 +62,7 @@ public:
 	// Õ“Ë‚µ‚½‚çŒÄ‚Ño‚³‚ê‚éŠÖ”
 	void OnHit() { m_isActive = false; }
 
+	// “G‚Ì’†S‚ÌˆÊ’u‚ğæ“¾‚·‚éŠÖ”
+	POINT GetCenterPosition();
+
 };

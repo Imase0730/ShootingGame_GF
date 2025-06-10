@@ -20,6 +20,7 @@
 #include "Player.h"
 #include "EnemyManager.h"
 #include "BulletManager.h"
+#include "Explosion.h"
 
 // クラスの宣言 ===============================================================
 
@@ -40,6 +41,9 @@ public:
 	// プレイヤー初期位置
 	static constexpr int PLAYER_START_POSITION_X = (Screen::WIDTH - Player::SIZE) / 2;
 	static constexpr int PLAYER_START_POSITION_Y = 600;
+
+	// 爆発エフェクトの最大数
+	static constexpr int EXPLOSION_MAX = 10;
 
 
 // データメンバの宣言 -----------------------------------------------
@@ -62,6 +66,9 @@ private:
 
 	// 弾のマネージャー（敵用）
 	BulletManager m_enemyBulletManager;
+
+	// 爆発エフェクトオブジェクト
+	Explosion m_explosion[EXPLOSION_MAX];
 
 
 // メンバ関数の宣言 -------------------------------------------------
@@ -98,5 +105,8 @@ private:
 
 	// 敵とプレイヤーの弾との衝突判定
 	void CheckEnemyColliedWithPlayerBullet();
+
+	// 爆発エフェクトを表示する関数
+	void SetExplosion(POINT position);
 
 };
