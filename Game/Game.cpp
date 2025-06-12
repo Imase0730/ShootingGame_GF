@@ -31,6 +31,7 @@ Game::Game()
 	, m_playerBulletManager{}
 	, m_enemyBulletManager{}
 	, m_explosion{}
+	, m_numberRenderer{ POINT{ 100, 200 }, 8, true }
 {
 	// 乱数の初期値を設定
 	SRand(static_cast<int>(time(nullptr)));
@@ -74,6 +75,9 @@ void Game::Initialize()
 
 	// 弾のマネージャーの初期化（敵用）
 	m_enemyBulletManager.Initialize(Bullet::Type::Enemy, 100);
+
+	m_numberRenderer.SetNumber(123);
+	m_numberRenderer.SetSize(100, 150);
 
 }
 
@@ -160,6 +164,8 @@ void Game::Render()
 		m_explosion[i].Render(m_ghShootingGame);
 	}
 
+	// 数字の描画
+	m_numberRenderer.Render(m_ghShootingGame);
 }
 
 

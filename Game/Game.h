@@ -21,6 +21,7 @@
 #include "EnemyManager.h"
 #include "BulletManager.h"
 #include "Explosion.h"
+#include "NuberRenderer.h"
 
 // クラスの宣言 ===============================================================
 
@@ -70,6 +71,8 @@ private:
 	// 爆発エフェクトオブジェクト
 	Explosion m_explosion[EXPLOSION_MAX];
 
+	// 数字を描画するオブジェクト
+	NumberRenderer m_numberRenderer;
 
 // メンバ関数の宣言 -------------------------------------------------
 // コンストラクタ/デストラクタ
