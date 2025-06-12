@@ -210,6 +210,8 @@ void Game::CheckPlayerColliedWithEnemyBullet()
 			// 衝突した
 			m_player.OnHit();
 			pBullet->OnHit();
+			// プレイヤーの位置に爆発エフェクトを発生させる
+			SetExplosion(m_player.GetCenterPosition());
 		}
 	}
 }
@@ -237,6 +239,8 @@ void Game::CheckEnemyColliedWithPlayerBullet()
 				// 衝突した
 				pBullet->OnHit();
 				pEnemy->OnHit();
+				// 敵の位置に爆発エフェクトを発生させる
+				SetExplosion(pEnemy->GetCenterPosition());
 			}
 		}
 	}
