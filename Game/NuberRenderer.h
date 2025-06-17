@@ -4,7 +4,7 @@
 class NumberRenderer
 {
 	// ’è”éŒ¾ -------------------------------------------------
-private:
+public:
 
 	// ”š‚ÌŠG‚Ì‘å‚«‚³
 	static constexpr int NUMBER_WIDTH = 16;

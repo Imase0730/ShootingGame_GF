@@ -31,7 +31,8 @@ Game::Game()
 	, m_playerBulletManager{}
 	, m_enemyBulletManager{}
 	, m_explosion{}
-	, m_numberRenderer{ POINT{ 100, 200 }, 8, true }
+	, m_numberRenderer{ POINT{ Screen::WIDTH / 2 - (NumberRenderer::NUMBER_WIDTH * 2 * 6) / 2, 0}, 6, false }
+	, m_score{ 0 }
 {
 	// 乱数の初期値を設定
 	SRand(static_cast<int>(time(nullptr)));
@@ -76,9 +77,8 @@ void Game::Initialize()
 	// 弾のマネージャーの初期化（敵用）
 	m_enemyBulletManager.Initialize(Bullet::Type::Enemy, 100);
 
-	m_numberRenderer.SetNumber(123);
-	m_numberRenderer.SetSize(100, 150);
-
+	// 数字のサイズの設定
+	m_numberRenderer.SetSize(NumberRenderer::NUMBER_WIDTH * 2, NumberRenderer::NUMBER_HEIGHT * 2);
 }
 
 
@@ -127,6 +127,8 @@ void Game::Update(float elapsedTime)
 		m_explosion[i].Update();
 	}
 
+	// 得点を設定
+	m_numberRenderer.SetNumber(m_score);
 }
 
 
@@ -247,6 +249,8 @@ void Game::CheckEnemyColliedWithPlayerBullet()
 				pEnemy->OnHit();
 				// 敵の位置に爆発エフェクトを発生させる
 				SetExplosion(pEnemy->GetCenterPosition());
+				// 得点加算
+				m_score += ENEMY_SCORE;
 			}
 		}
 	}

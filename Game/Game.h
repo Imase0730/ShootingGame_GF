@@ -46,6 +46,8 @@ public:
 	// 爆発エフェクトの最大数
 	static constexpr int EXPLOSION_MAX = 10;
 
+	// 敵の得点
+	static constexpr int ENEMY_SCORE = 10;
 
 // データメンバの宣言 -----------------------------------------------
 private:
@@ -73,6 +75,9 @@ private:
 
 	// 数字を描画するオブジェクト
 	NumberRenderer m_numberRenderer;
+
+	// 得点
+	int m_score;
 
 // メンバ関数の宣言 -------------------------------------------------
 // コンストラクタ/デストラクタ
