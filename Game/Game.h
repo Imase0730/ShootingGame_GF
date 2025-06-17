@@ -17,11 +17,11 @@
 // ヘッダファイルの読み込み ===================================================
 
 #include "Game/Screen.h"
-#include "Player.h"
-#include "EnemyManager.h"
-#include "BulletManager.h"
-#include "Explosion.h"
-#include "NuberRenderer.h"
+
+// 各シーンのヘッダ
+#include "Game/GamePlayScene/GamePlayScene.h"
+#include "Game/TitleScene/TitleScene.h"
+
 
 // クラスの宣言 ===============================================================
 
@@ -34,20 +34,24 @@
  */
 class Game
 {
+
+// 列挙型の定義 -----------------------------------------------------
+public:
+
+	// シーンID
+	enum class SceneID
+	{
+		NONE = -1,
+		TITLE,
+		GAMEPLAY,
+	};
+
 // クラス定数の宣言 -------------------------------------------------
 public:
 	// システム関連
 	static constexpr const wchar_t* TITLE = L"Shooting Game";   ///< ゲームタイトル
 
-	// プレイヤー初期位置
-	static constexpr int PLAYER_START_POSITION_X = (Screen::WIDTH - Player::SIZE) / 2;
-	static constexpr int PLAYER_START_POSITION_Y = 600;
 
-	// 爆発エフェクトの最大数
-	static constexpr int EXPLOSION_MAX = 10;
-
-	// 敵の得点
-	static constexpr int ENEMY_SCORE = 10;
 
 // データメンバの宣言 -----------------------------------------------
 private:
@@ -55,29 +59,12 @@ private:
 	int m_key;       ///< 現在のキー情報
 	int m_oldKey;    ///< 前回のキー情報
 
-	// 絵のグラフィックハンドル
-	int m_ghShootingGame;
+	// シーン関連
+	SceneID m_currentSceneID;		///< 現在のシーンID
+	SceneID m_requestedSceneID;		///< 変更要求のシーンID
 
-	// プレイヤー
-	Player m_player;
-
-	// 敵のマネージャー
-	EnemyManager m_enemyManager;
-
-	// 弾のマネージャー（プレイヤー用）
-	BulletManager m_playerBulletManager;
-
-	// 弾のマネージャー（敵用）
-	BulletManager m_enemyBulletManager;
-
-	// 爆発エフェクトオブジェクト
-	Explosion m_explosion[EXPLOSION_MAX];
-
-	// 数字を描画するオブジェクト
-	NumberRenderer m_numberRenderer;
-
-	// 得点
-	int m_score;
+	TitleScene m_titleScene;		///< タイトルシーン
+	GamePlayScene m_gamePlayScene;	///< ゲームプレイシーン
 
 // メンバ関数の宣言 -------------------------------------------------
 // コンストラクタ/デストラクタ
@@ -103,18 +90,18 @@ public:
 	// 終了処理
 	void Finalize();
 
+	// 内部実装
 private:
 
-	// 矩形の衝突判定
-	bool IsColliding(RECT a, RECT b);
+	// 現在のシーンの初期化処理
+	void InitializeCurrentScene();
 
-	// プレイヤーと敵の弾との衝突判定
-	void CheckPlayerColliedWithEnemyBullet();
+	// 現在のシーンの更新処理
+	void UpdateCurrentScene();
 
-	// 敵とプレイヤーの弾との衝突判定
-	void CheckEnemyColliedWithPlayerBullet();
+	// 現在のシーンの描画処理
+	void RenderCurrentScene();
 
-	// 爆発エフェクトを表示する関数
-	void SetExplosion(POINT position);
-
+	// 現在のシーンの終了処理
+	void FinalizeCurrentScene();
 };
