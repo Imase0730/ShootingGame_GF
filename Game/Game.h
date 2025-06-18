@@ -90,14 +90,23 @@ public:
 	// 終了処理
 	void Finalize();
 
+	// シーンを変更する関数
+	void RequestSceneChange(SceneID nextSceneID);
+
 	// 内部実装
 private:
+
+	// 開始シーンの設定
+	void SetStartScene(SceneID startSceneID);
+
+	// シーンの変更関数
+	void ChangeScene();
 
 	// 現在のシーンの初期化処理
 	void InitializeCurrentScene();
 
 	// 現在のシーンの更新処理
-	void UpdateCurrentScene();
+	void UpdateCurrentScene(int keyCondition, int keyTrigger);
 
 	// 現在のシーンの描画処理
 	void RenderCurrentScene();

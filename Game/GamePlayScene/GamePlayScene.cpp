@@ -48,6 +48,11 @@ void GamePlayScene::Initialize()
 	// 数字のサイズの設定
 	m_numberRenderer.SetSize(NumberRenderer::NUMBER_WIDTH * 2, NumberRenderer::NUMBER_HEIGHT * 2);
 
+	// 爆発エフェクトの初期化
+	for (int i = 0; i < EXPLOSION_MAX; i++)
+	{
+		m_explosion[i].Initialize();
+	}
 }
 
 // 更新処理
@@ -157,6 +162,8 @@ void GamePlayScene::CheckPlayerColliedWithEnemyBullet()
 			pBullet->OnHit();
 			// プレイヤーの位置に爆発エフェクトを発生させる
 			SetExplosion(m_player.GetCenterPosition());
+			// タイトルシーンへ
+			m_pGame->RequestSceneChange(Game::SceneID::TITLE);
 		}
 	}
 }
@@ -202,7 +209,7 @@ void GamePlayScene::SetExplosion(POINT position)
 		if (!m_explosion[i].IsActive())
 		{
 			// 爆発エフェクトを発生する
-			m_explosion[i].Initialize(position);
+			m_explosion[i].StartExplosion(position);
 			return;
 		}
 	}

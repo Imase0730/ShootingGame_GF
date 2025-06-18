@@ -27,7 +27,12 @@ void TitleScene::Initialize()
 // 更新処理
 void TitleScene::Update(int keyCondition, int keyTrigger)
 {
-
+	// スペースキーが押されたら
+	if (keyTrigger & PAD_INPUT_10)
+	{
+		// ゲームプレイシーンへ
+		m_pGame->RequestSceneChange(Game::SceneID::GAMEPLAY);
+	}
 }
 
 // 描画処理

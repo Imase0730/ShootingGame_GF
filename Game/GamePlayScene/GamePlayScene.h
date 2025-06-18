@@ -4,6 +4,7 @@
 //--------------------------------------------------------------------------------------
 #pragma once
 
+#include "Game/Screen.h"
 #include "Player.h"
 #include "EnemyManager.h"
 #include "BulletManager.h"

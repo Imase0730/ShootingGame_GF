@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "NuberRenderer.h"
+#include "NumberRenderer.h"
 
 // コンストラクタ
 NumberRenderer::NumberRenderer(

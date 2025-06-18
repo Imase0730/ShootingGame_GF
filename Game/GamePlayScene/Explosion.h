@@ -48,6 +48,9 @@ public:
 	// デストラクタ
 	~Explosion();
 
+	// 初期化関数
+	void Initialize();
+
 	// 更新処理
 	void Update();
 
@@ -55,7 +58,7 @@ public:
 	void Render(int ghShootingGame);
 
 	// 指定した位置に爆発を表示する関数
-	void Initialize(POINT position);
+	void StartExplosion(POINT position);
 
 	// この爆発オブジェクトが使用中かチェックする関数
 	bool IsActive();

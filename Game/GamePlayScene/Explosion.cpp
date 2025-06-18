@@ -13,6 +13,14 @@ Explosion::~Explosion()
 {
 }
 
+// 初期化関数
+void Explosion::Initialize()
+{
+	m_position = POINT{ 0, 0 };
+	m_animationState=AnimationState::AnimNone;
+	m_animationCounter = 0;
+}
+
 // 更新処理
 void Explosion::Update()
 {
@@ -59,7 +67,7 @@ void Explosion::Render(int ghShootingGame)
 }
 
 // 指定した位置に爆発を表示する関数
-void Explosion::Initialize(POINT position)
+void Explosion::StartExplosion(POINT position)
 {
 	// 爆発の表示位置を設定する
 	m_position = 
